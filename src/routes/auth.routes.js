@@ -1,9 +1,10 @@
 import express from 'express'
-import {registerUser} from '../controllers/auth.controllers.js'
+import {registerUser,loginUser} from '../controllers/auth.controllers.js'
 
 const routes = express.Router();
 
 routes.post("/signup",registerUser)
+routes.post("/login",loginUser)
 
 
 
