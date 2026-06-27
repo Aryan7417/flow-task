@@ -2,6 +2,7 @@ import express from 'express'
 import {registerUser,loginUser,logoutUser,getCurrentUser} from '../controllers/auth.controllers.js'
 import {isAuthenticate} from '../middleware/auth.middlewere.js'
 
+
 const routes = express.Router();
 
 routes.post("/signup",registerUser)

@@ -4,6 +4,7 @@ import cors from "cors";
 import connedtDB from "./src/config/db.config.js"
 import routes from "./src/routes/auth.routes.js"
 import cookieParser from "cookie-parser";
+import router from "./src/routes/project.routes.js"
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use("/api/auth",routes)
+app.use("/api/projects", router);
 
 
 
