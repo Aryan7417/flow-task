@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connedtDB from "./src/config/db.config.js"
 import routes from "./src/routes/auth.routes.js"
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ connedtDB();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser())
 
 app.use("/api/auth",routes)
 

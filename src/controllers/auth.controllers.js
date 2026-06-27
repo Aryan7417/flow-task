@@ -73,6 +73,7 @@ export const loginUser = async (req, res) => {
                 message: 'Emaoil and password is not required'
             })
         }
+        console.log(req.body);
 
         //find user
         const user = await User.findOne({ email })
@@ -105,6 +106,14 @@ export const loginUser = async (req, res) => {
                 expiresIn:"7d"
             }
         )
+
+        res.cookie("token",token,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"lax",
+            maxAge:7 * 24 * 60 * 60 * 1000,
+        })
+
         res.status(200).json({
             success:true,
             message:"LOGIN SUCCESSFUL",
@@ -115,6 +124,7 @@ export const loginUser = async (req, res) => {
                 email:user.email
             }
         })
+        
 
 
     }
@@ -134,12 +144,40 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = async (req , res)=>{
     try{
+        res.cookie("token","",{
+            httpOnly:true,
+            expires:new Date(0)
+        })
+        return res.status(200).json({
+            success:true,
+            message:"Logout Successful"
+        })
 
     }
 
-    catch(error){}
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:error.message 
+        })
+    }
 }
 
+export const getCurrentUser = async (req, res) => {
+    try {
+
+        return res.status(200).json({
+            success: true,
+            user: req.user
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
 
 
 
