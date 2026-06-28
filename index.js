@@ -5,6 +5,8 @@ import connedtDB from "./src/config/db.config.js"
 import routes from "./src/routes/auth.routes.js"
 import cookieParser from "cookie-parser";
 import router from "./src/routes/project.routes.js"
+import taskRoutes from "./src/routes/task.routes.js";
+
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ app.use(cookieParser())
 
 app.use("/api/auth",routes)
 app.use("/api/projects", router);
+app.use("/api/tasks", taskRoutes);
 
 
 
