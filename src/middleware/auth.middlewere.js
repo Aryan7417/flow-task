@@ -5,7 +5,7 @@ export const isAuthenticate = async (req, res, next) => {
     try {
 
         const token = req.cookies.token;
-        console.log("Token:", token);
+        // console.log("Token:", token);
 
 
         if (!token) {
@@ -31,8 +31,8 @@ export const isAuthenticate = async (req, res, next) => {
         //store user in request
         req.user = user
 
-        console.log("cookie",req.cookies);
-        console.log(req.cookies.token);
+        // console.log("cookie",req.cookies);
+        // console.log(req.cookies.token);
         next()
     }
     catch (error) {

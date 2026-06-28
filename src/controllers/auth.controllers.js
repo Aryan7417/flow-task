@@ -39,7 +39,7 @@ export const registerUser = async (req, res) => {
             email,
             password: hashedPassword
         })
-        console.log(user)
+        //console.log(user)
         res.status(200).json({
             success: true,
             message: "User Register Successful"
@@ -73,7 +73,7 @@ export const loginUser = async (req, res) => {
                 message: 'Emaoil and password is not required'
             })
         }
-        console.log(req.body);
+        // console.log(req.body);
 
         //find user
         const user = await User.findOne({ email })
